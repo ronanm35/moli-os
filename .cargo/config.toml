@@ -1,13 +1,5 @@
-# Configuration Cargo pour Moli OS.
-
-[build]
-# Cible par défaut : binaire statique musl, zéro dépendance libc.
-target = "x86_64-unknown-linux-musl"
-
 [target.x86_64-unknown-linux-musl]
-# Le linker musl-gcc doit être installé (paquet musl-tools sur Debian/Ubuntu).
 linker = "x86_64-linux-musl-gcc"
 
-# SQLite bundled compile en C ; il faut le CC musl.
 [env]
 CC_x86_64_unknown_linux_musl = "musl-gcc"
