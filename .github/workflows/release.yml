@@ -8,6 +8,9 @@ on:
 env:
   CARGO_TERM_COLOR: always
 
+permissions:
+  contents: write
+  
 jobs:
   build-musl:
     name: Build binaire musl statique
