@@ -36,11 +36,11 @@ jobs:
           cargo build \
             --release \
             --target x86_64-unknown-linux-musl \
-            -p moli-host
+            -p moli-os
 
       - name: Vérifier le binaire
         run: |
-          BIN=target/x86_64-unknown-linux-musl/release/moli-host
+          BIN=target/x86_64-unknown-linux-musl/release/moli-os
           ls -lh "$BIN"
           file "$BIN"
           ldd "$BIN" 2>&1 || true
@@ -48,14 +48,14 @@ jobs:
       - name: Upload artefact (CI)
         uses: actions/upload-artifact@v4
         with:
-          name: moli-host-x86_64-linux-musl
-          path: target/x86_64-unknown-linux-musl/release/moli-host
+          name: moli-os-x86_64-linux-musl
+          path: target/x86_64-unknown-linux-musl/release/moli-os
           retention-days: 7
 
       - name: Créer la release GitHub
         uses: softprops/action-gh-release@v2
         with:
-          files: target/x86_64-unknown-linux-musl/release/moli-host
+          files: target/x86_64-unknown-linux-musl/release/moli-os
           name: Moli OS ${{ github.ref_name }}
           body: |
             ## Installation rapide
