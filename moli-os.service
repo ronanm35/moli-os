@@ -1,0 +1,25 @@
+[Unit]
+Description=Moli OS — domotique ultra-légère
+Documentation=https://github.com/rudy-io/moli-os
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/moli-host --config /etc/moli/home.toml
+Restart=on-failure
+RestartSec=5s
+
+# Sécurité minimale
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/etc/moli
+
+# Limites ressources
+MemoryMax=64M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

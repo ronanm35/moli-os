@@ -7,6 +7,7 @@ license.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+moli-ui.workspace = true
 moli-ambiance.workspace = true
 moli-core.workspace = true
 moli-i18n.workspace = true
@@ -23,10 +24,8 @@ anyhow.workspace = true
 axum.workspace = true
 futures.workspace = true
 http.workspace = true
-mime_guess.workspace = true
 ring.workspace = true
 rmcp.workspace = true
-rust-embed.workspace = true
 schemars.workspace = true
 serde.workspace = true
 serde_json.workspace = true

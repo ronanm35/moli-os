@@ -45,7 +45,9 @@ moli-esphome = { path = "crates/moli-esphome" }
 moli-alexa = { path = "crates/moli-alexa" }
 moli-demo = { path = "crates/moli-demo" }
 moli-weather = { path = "crates/moli-weather" }
+moli-ui = { path = "crates/moli-ui" }
 
+maud = "0.26"
 aes = "0.8"
 anyhow = "1"
 axum = { version = "0.8", default-features = false, features = ["http1", "json", "query", "tokio", "macros"] }
