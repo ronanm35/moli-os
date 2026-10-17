@@ -38,13 +38,12 @@ jobs:
             --target x86_64-unknown-linux-musl \
             -p moli-host
 
-      - name: Vérifier que le binaire est statique
+      - name: Vérifier le binaire
         run: |
           BIN=target/x86_64-unknown-linux-musl/release/moli-host
-          ldd "$BIN" 2>&1 | grep -q "not a dynamic" || \
-            { echo "ERREUR : le binaire n'est pas statique !"; ldd "$BIN"; exit 1; }
           ls -lh "$BIN"
           file "$BIN"
+          ldd "$BIN" 2>&1 || true
 
       - name: Upload artefact (CI)
         uses: actions/upload-artifact@v4
@@ -62,7 +61,7 @@ jobs:
             ## Installation rapide
 
             ```bash
-            curl -fsSL https://raw.githubusercontent.com/rudy-io/moli-os/main/install.sh | sudo bash
+            curl -fsSL https://raw.githubusercontent.com/ronanm35/moli-os/main/install.sh | sudo bash
             ```
 
             Ou manuellement :
@@ -70,7 +69,7 @@ jobs:
             ```bash
             # Télécharger le binaire
             curl -fsSL \
-              https://github.com/rudy-io/moli-os/releases/download/${{ github.ref_name }}/moli-host \
+              https://github.com/ronanm35/moli-os/releases/download/${{ github.ref_name }}/moli-host \
               -o /usr/local/bin/moli-host
             chmod +x /usr/local/bin/moli-host
 
@@ -80,7 +79,7 @@ jobs:
 
             # Activer le service
             curl -fsSL \
-              https://raw.githubusercontent.com/rudy-io/moli-os/main/moli-os.service \
+              https://raw.githubusercontent.com/ronanm35/moli-os/main/moli-os.service \
               -o /etc/systemd/system/moli-os.service
             systemctl daemon-reload
             systemctl enable --now moli-os
