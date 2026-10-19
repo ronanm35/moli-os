@@ -59,7 +59,7 @@ if [ ! -f "$CONFIG_FILE" ]; then
 # Éditez ce fichier puis relancez le service.
 
 [server]
-port = 7070
+listen = "0.0.0.0:7070"
 # allowed_hosts = ["192.168.1.42", "moli.local"]
 
 # [z2m]
